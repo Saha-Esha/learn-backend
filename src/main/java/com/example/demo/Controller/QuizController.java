@@ -41,22 +41,7 @@ public class QuizController {
     public List<Quiz> getQuizzesByLesson(@PathVariable String lessonId) {
         return quizRepo.findByLessonId(lessonId);
     }
-
-    // Student submits answer
-    // @PostMapping("/submit/{quizId}")
-    // public String submitAnswer(@PathVariable String lessonId,
-    //                            @PathVariable String quizId,
-    //                            @RequestParam int selectedOption) {
-    //     Quiz quiz = quizRepo.findById(quizId).orElse(null);
-    //     if (quiz == null || !quiz.getLessonId().equals(lessonId)) 
-    //         return "Quiz not found for this lesson";
-
-    //     if (selectedOption == quiz.getCorrectOptionIndex()) {
-    //         return "Correct!";
-    //     } else {
-    //         return "Wrong! Correct answer is option " + (quiz.getCorrectOptionIndex() + 1);
-    //     }
-    // }
+    
     @PostMapping("/submit/{quizId}")
         public String submitAnswer(
         @PathVariable String lessonId,
@@ -71,7 +56,8 @@ public class QuizController {
     }
 
         boolean isCorrect = selectedOption == quiz.getCorrectOptionIndex();
-        int marks = isCorrect ? 1 : 0;
+        int marks = isCorrect ? 1 : 0; 
+        
 
         QuizSubmission submission = new QuizSubmission(
             studentId,
@@ -87,7 +73,7 @@ public class QuizController {
         return isCorrect
             ? "Correct!"
             : "Wrong! Correct answer is option " + (quiz.getCorrectOptionIndex() + 1);
-}
+    }
 
     @GetMapping("/result/{studentId}")
         public int getTotalMarks(@PathVariable String studentId) {
@@ -101,14 +87,14 @@ public class QuizController {
 
          
    @DeleteMapping("/result/delete")
-public String deleteLessonResult(
+    public String deleteLessonResult(
         @PathVariable String lessonId,
         @RequestParam String studentId) {
 
     quizSubmissionRepo.deleteByStudentIdAndLessonId(studentId, lessonId);
 
     return "Quiz results deleted successfully";
-}
+    }
 
     // Delete quiz
     @DeleteMapping("/delete/{quizId}")

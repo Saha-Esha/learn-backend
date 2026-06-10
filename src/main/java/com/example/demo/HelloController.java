@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
@@ -9,7 +9,13 @@ public class HelloController {
     
     @GetMapping("/hello1")
     public String sayHello() {
-        return "find the port working";
+        return "Learning Application working";
     }
     
 }
+// CRUD
+// 
+// Create-> POST ( send data to server)
+// Read  ->GET ( call data from server)
+// Update ->PUT ( update data on server)
+// Delete ->DELETE (remove data from server)

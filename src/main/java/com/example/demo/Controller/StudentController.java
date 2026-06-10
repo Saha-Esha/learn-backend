@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*") 
+//  fornt header
 @RequestMapping("api/v1/student")
+
+// http://localhost:8089/api/v1/student (base API) 
 
 public class StudentController {
     
@@ -72,11 +75,7 @@ public class StudentController {
         studentServices.deleteStudent(id);
         }
 
-        // TODO This is not working 
-    //    @RequestMapping(value="/student/{id}")
-    //     private String getStudent(@PathVariable(name = "id") String studentid) {
-    //         return studentServices.getStudentById(studentid);
-    //     }
+        
         
 
 }
